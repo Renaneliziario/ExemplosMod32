@@ -4,19 +4,19 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import br.com.renan.domain.Matricula;
+import br.com.renan.domain.Produto;
 
-public class MatriculaDao implements IMatriculaDao {
+public class ProdutoDao implements IProdutoDao {
 
-    private static final EntityManagerFactory entityManagerFactory =
+        private static final EntityManagerFactory entityManagerFactory =
         Persistence.createEntityManagerFactory("ExemploJPA");
 
     @Override
-    public Matricula cadastrar(Matricula mat) {
+    public Produto salvar(Produto produto) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
             entityManager.getTransaction().begin();
-            mat = entityManager.merge(mat);  // usar merge para evitar erro detached
+            produto = entityManager.merge(produto);  // usar merge para evitar erro detached
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             if (entityManager.getTransaction().isActive()) {
@@ -26,7 +26,7 @@ public class MatriculaDao implements IMatriculaDao {
         } finally {
             entityManager.close();
         }
-        return mat;
+        return produto;
     }
 
     // método para fechar a factory ao encerrar a aplicação, se necessário
@@ -35,4 +35,5 @@ public class MatriculaDao implements IMatriculaDao {
             entityManagerFactory.close();
         }
     }
+
 }
