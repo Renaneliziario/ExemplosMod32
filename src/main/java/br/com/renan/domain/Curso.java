@@ -26,8 +26,6 @@ public class Curso {
 	@Column (name = "DESCRICAO", length = 100, nullable = false)	
 	private String descricao;		
 	
-	
-	
 	public Long getId() {
 		return id;
 	}

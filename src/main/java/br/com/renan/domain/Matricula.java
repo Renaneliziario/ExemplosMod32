@@ -19,7 +19,7 @@ public class Matricula {
 	@SequenceGenerator(name="matri_seq", sequenceName="sq_matricula", initialValue =1, allocationSize = 1)
 	private Long id;
 	
-	@Column (name = "CODIGO", length = 10, nullable = false, unique = true)	
+	@Column (name = "CODIGO", length = 36, nullable = false, unique = true)	
 	private String codigo;	
 	
 	@Column(name = "DATA_MATRICULA")
